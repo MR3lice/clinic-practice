@@ -1,0 +1,158 @@
+/* =========================================================
+   Noor Skin Clinic — base styles
+   Mobile-first: base rules target phones; wider screens
+   are handled with min-width media queries at the bottom.
+   Logical properties (margin-inline, padding-block, ...)
+   are used so the layout flips automatically for Arabic (RTL).
+   ========================================================= */
+
+/* ---------- Design tokens (colours, spacing, fonts) ---------- */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f3faf9;      /* very light teal tint for alternating sections */
+  --color-text: #1f2d2d;        /* near-black, softer than pure black */
+  --color-text-muted: #556666;
+  --color-primary: #0f8a85;     /* soft teal — main accent */
+  --color-primary-dark: #0b6e6a;/* darker teal for hover / text on white */
+  --color-primary-light: #d7efed;
+  --color-border: #e2eeed;
+
+  --font-main: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius: 12px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --container-max: 960px;
+  --header-height: 60px;
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height); /* anchor links don't hide under sticky header */
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+  margin-block: 0 var(--space-2);
+  font-weight: 600;
+}
+
+p {
+  margin-block: 0 var(--space-2);
+}
+
+a {
+  color: var(--color-primary-dark);
+}
+
+/* Visible keyboard focus for accessibility */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+}
+
+.section {
+  padding-block: var(--space-4);
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+}
+
+/* Temporary placeholder text (removed as modules are built) */
+.placeholder {
+  padding: var(--space-3);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+
+.brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 100%);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: var(--space-3);
+  background: var(--color-primary-dark);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+/* ---------- Wider screens ---------- */
+@media (min-width: 768px) {
+  .section {
+    padding-block: 4rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+}
