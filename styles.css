@@ -146,6 +146,106 @@ a {
   margin: 0;
 }
 
+/* ---------- Arabic tweaks ---------- */
+html[lang="ar"] body {
+  line-height: 1.8; /* Arabic script reads better with a little more line spacing */
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;           /* comfortable finger-sized tap target */
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--color-primary-dark);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-dark);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary-light);
+}
+
+.btn-small {
+  min-height: 44px;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- First-visit language screen ---------- */
+.lang-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 70%);
+}
+
+.lang-picker[hidden] {
+  display: none;
+}
+
+.lang-picker-box {
+  width: 100%;
+  max-width: 360px;
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(15, 138, 133, 0.12);
+  text-align: center;
+}
+
+.lang-picker-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  line-height: 1.5;
+}
+
+.lang-picker-title {
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-3);
+}
+
+.lang-picker-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lang-picker-buttons .btn {
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* ---------- Wider screens ---------- */
 @media (min-width: 768px) {
   .section {

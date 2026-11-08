@@ -7,6 +7,11 @@
   <meta name="description" content="Noor Skin Clinic — a fictional skin and beauty clinic in Bahrain. Demo website.">
   <meta name="theme-color" content="#0f8a85">
 
+  <!-- Apply a saved Arabic choice before the page draws (prevents a left-to-right flash) -->
+  <script>
+    try { if (localStorage.getItem('noor-lang') === 'ar') { document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl'; } } catch (e) {}
+  </script>
+
   <!-- One font family that covers both English and Arabic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,10 +21,27 @@
 </head>
 <body>
 
+  <!-- First-visit language screen (shown by script.js only if no language is saved) -->
+  <div id="lang-picker" class="lang-picker" role="dialog" aria-modal="true" aria-labelledby="lang-picker-title" hidden>
+    <div class="lang-picker-box">
+      <p class="lang-picker-brand">
+        <span lang="ar" dir="rtl">عيادة نور للبشرة</span><br>
+        <span lang="en">Noor Skin Clinic</span>
+      </p>
+      <p id="lang-picker-title" class="lang-picker-title">
+        <span lang="ar" dir="rtl">اختر اللغة</span> · <span lang="en">Choose your language</span>
+      </p>
+      <div class="lang-picker-buttons">
+        <button type="button" class="btn btn-primary" data-lang="ar" lang="ar">العربية</button>
+        <button type="button" class="btn btn-primary" data-lang="en" lang="en">English</button>
+      </div>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand">Noor Skin Clinic</a>
-      <!-- Module 2: language switch goes here -->
+      <a href="#top" class="brand" data-i18n="brand">Noor Skin Clinic</a>
+      <button type="button" id="lang-switch" class="btn btn-outline btn-small" lang="ar" aria-label="التبديل إلى العربية">العربية</button>
     </div>
   </header>
 
@@ -28,23 +50,23 @@
     <!-- Module 3: hero (welcome + Book now) -->
     <section id="hero" class="section hero">
       <div class="container">
-        <p class="placeholder">Hero section — coming in Module 3</p>
+        <p class="placeholder" data-i18n="heroPlaceholder">Hero section — coming in Module 3</p>
       </div>
     </section>
 
     <!-- Module 4: services & prices -->
     <section id="services" class="section">
       <div class="container">
-        <h2 class="section-title">Services &amp; Prices</h2>
-        <p class="placeholder">Treatment cards — coming in Module 4</p>
+        <h2 class="section-title" data-i18n="servicesTitle">Services &amp; Prices</h2>
+        <p class="placeholder" data-i18n="servicesPlaceholder">Treatment cards — coming in Module 4</p>
       </div>
     </section>
 
     <!-- Module 7: hours & location -->
     <section id="contact" class="section section-alt">
       <div class="container">
-        <h2 class="section-title">Hours &amp; Location</h2>
-        <p class="placeholder">Opening hours and address — coming in Module 7</p>
+        <h2 class="section-title" data-i18n="contactTitle">Hours &amp; Location</h2>
+        <p class="placeholder" data-i18n="contactPlaceholder">Opening hours and address — coming in Module 7</p>
       </div>
     </section>
 
@@ -52,9 +74,11 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; Noor Skin Clinic — fictional demo website.</p>
+      <p data-i18n="footer">&copy; Noor Skin Clinic — fictional demo website.</p>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
