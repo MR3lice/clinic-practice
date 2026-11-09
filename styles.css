@@ -8,14 +8,16 @@
 
 /* ---------- Design tokens (colours, spacing, fonts) ---------- */
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #f3faf9;      /* very light teal tint for alternating sections */
-  --color-text: #1f2d2d;        /* near-black, softer than pure black */
-  --color-text-muted: #556666;
-  --color-primary: #0f8a85;     /* soft teal — main accent */
-  --color-primary-dark: #0b6e6a;/* darker teal for hover / text on white */
-  --color-primary-light: #d7efed;
-  --color-border: #e2eeed;
+  --color-bg: #F8F8F4;          /* cream page background */
+  --color-bg-alt: #E8F3EC;      /* mint for alternating sections */
+  --color-text: #111A16;        /* near-black with a hint of green — all text */
+  --color-text-muted: #4F5F57;  /* green-grey for secondary text */
+  --color-primary: #1E8A5A;     /* accent green — highlighted words, focus rings.
+                                   Large text only: too light for small text (WCAG). */
+  --color-primary-dark: #0F4D3A;/* deep forest green — buttons, footer, small coloured text */
+  --color-primary-hover: #146B47;/* filled-button hover (white text stays readable) */
+  --color-primary-light: #E8F3EC;/* mint — hero fade, outline-button hover */
+  --color-border: #D3E6DA;
 
   --font-main: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -151,6 +153,11 @@ html[lang="ar"] .hero-eyebrow {
   color: var(--color-text);
 }
 
+/* One highlighted word in the headline (large text, so the accent passes contrast) */
+.highlight {
+  color: var(--color-primary);
+}
+
 .hero-text {
   font-size: 1.1rem;
   color: var(--color-text-muted);
@@ -204,8 +211,8 @@ html[lang="ar"] body {
 }
 
 .btn-primary:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
 }
 
 .btn-outline {
@@ -246,7 +253,7 @@ html[lang="ar"] body {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  box-shadow: 0 8px 30px rgba(15, 138, 133, 0.12);
+  box-shadow: 0 8px 30px rgba(15, 77, 58, 0.12);
   text-align: center;
 }
 

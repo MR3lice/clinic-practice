@@ -18,7 +18,10 @@
       switchLabel: 'العربية',
       switchAria: 'التبديل إلى العربية',
       heroEyebrow: 'Skin & Beauty Clinic · Bahrain',
-      heroTitle: 'Healthy, glowing skin starts here',
+      // Headline is split in three so the middle word can be coloured.
+      heroTitleBefore: 'Healthy, ',
+      heroTitleHighlight: 'glowing',
+      heroTitleAfter: ' skin starts here',
       heroText: 'Expert skin care by licensed specialists, in a calm and modern clinic.',
       heroBook: 'Book now',
       heroPrices: 'View prices',
@@ -35,7 +38,10 @@
       switchLabel: 'English',
       switchAria: 'Switch to English',
       heroEyebrow: 'عيادة البشرة والتجميل · البحرين',
-      heroTitle: 'بشرة صحية ومشرقة تبدأ من هنا',
+      // "و" stays uncoloured; it never joins the next letter, so splitting is safe.
+      heroTitleBefore: 'بشرة صحية و',
+      heroTitleHighlight: 'مشرقة',
+      heroTitleAfter: ' تبدأ من هنا',
       heroText: 'عناية متخصصة بالبشرة على أيدي أطباء مرخّصين، في عيادة هادئة وحديثة.',
       heroBook: 'احجز موعدك',
       heroPrices: 'عرض الأسعار',

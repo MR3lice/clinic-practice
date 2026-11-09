@@ -8,7 +8,7 @@ The user is **learning Claude Code as a beginner**. After each module, explain i
 ## The project
 - **What:** a one-page website for a **fictional** skin & beauty clinic in Bahrain ("Noor Skin Clinic"). All names, prices, numbers and details are made up. Never use real patient or business data — this repo is public.
 - **Audience:** people in Bahrain browsing on their phones.
-- **Style:** clean and medical — white background, soft teal accents, calm and trustworthy. Mobile-first.
+- **Style:** clean and medical — cream background, deep forest green and mint accents, calm and trustworthy. Mobile-first.
 - **Languages:** Arabic and English. On first visit, show a simple language choice screen ("العربية / English"). Remember the choice for the visitor and offer a switch in the header. Arabic must display right-to-left correctly.
 - **Booking:** a WhatsApp button linking to the dummy number `wa.me/97300000000`, with a ready-made message in the current language.
 - **Hosting:** GitHub Pages, so everything must work as static files.
