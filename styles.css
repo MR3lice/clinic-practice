@@ -18,6 +18,7 @@
   --color-primary-hover: #146B47;/* filled-button hover (white text stays readable) */
   --color-primary-light: #E8F3EC;/* mint — hero fade, outline-button hover */
   --color-border: #D3E6DA;
+  --color-surface: #FFFFFF;     /* cards sitting on the cream background */
 
   --font-main: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -171,6 +172,65 @@ html[lang="ar"] .hero-eyebrow {
   gap: 0.75rem;
 }
 
+/* ---------- Services & prices ---------- */
+.service-list {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;   /* one card per row on phones */
+  gap: var(--space-2);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.service-name {
+  font-size: 1.15rem;
+  margin-block-end: var(--space-1);
+}
+
+.service-desc {
+  color: var(--color-text-muted);
+  flex-grow: 1;                 /* keeps prices lined up at the bottom of each card */
+}
+
+.service-meta {
+  display: flex;
+  flex-wrap: wrap;              /* if the card is narrow, the time moves below the price */
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem var(--space-2);
+  margin: 0;
+  padding-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.service-price {
+  white-space: nowrap;          /* never split a price across two lines */
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.service-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.service-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   padding-block: var(--space-3);
@@ -292,6 +352,18 @@ body.no-scroll {
 @media (min-width: 480px) {
   .hero-actions {
     flex-direction: row;    /* buttons side by side once there is room */
+  }
+}
+
+@media (min-width: 600px) {
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .service-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
