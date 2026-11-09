@@ -56,8 +56,18 @@
       svc6Time: '30 min',
       servicesNote: 'Prices are a guide and are confirmed at your consultation.',
       contactTitle: 'Hours & Location',
-      contactPlaceholder: 'Opening hours and address — coming in Module 7',
-      footer: '© Noor Skin Clinic — fictional demo website.'
+      hoursTitle: 'Opening hours',
+      hoursDays1: 'Saturday – Thursday',
+      hoursTime1: '10:00 AM – 9:00 PM',
+      hoursDays2: 'Friday',
+      hoursTime2: 'Closed',
+      locationTitle: 'Location & contact',
+      address: 'Building 0000, Road 0000, Block 000, Seef, Manama, Kingdom of Bahrain',
+      addressNote: 'Fictional address for this demo website.',
+      phoneLabel: 'Phone',
+      whatsappLink: 'Chat on WhatsApp',
+      footerTagline: 'Skin & beauty care in Bahrain.',
+      footer: '© 2026 Noor Skin Clinic — fictional demo website. All names, prices and details are made up.'
     },
     ar: {
       metaTitle: 'عيادة نور للبشرة | البحرين',
@@ -103,8 +113,19 @@
       svc6Time: '30 دقيقة',
       servicesNote: 'الأسعار إرشادية، ويتم تأكيدها خلال الاستشارة.',
       contactTitle: 'ساعات العمل والموقع',
-      contactPlaceholder: 'ساعات العمل والعنوان — قريبًا في الوحدة 7',
-      footer: '© عيادة نور للبشرة — موقع تجريبي خيالي.'
+      hoursTitle: 'ساعات العمل',
+      // Ranges written in words, not with a dash (see CLAUDE.md lessons)
+      hoursDays1: 'من السبت إلى الخميس',
+      hoursTime1: 'من 10 صباحًا إلى 9 مساءً',
+      hoursDays2: 'الجمعة',
+      hoursTime2: 'مغلق',
+      locationTitle: 'الموقع والتواصل',
+      address: 'مبنى 0000، طريق 0000، مجمع 000، السيف، المنامة، مملكة البحرين',
+      addressNote: 'عنوان خيالي لهذا الموقع التجريبي.',
+      phoneLabel: 'الهاتف',
+      whatsappLink: 'تواصل عبر واتساب',
+      footerTagline: 'العناية بالبشرة والتجميل في البحرين.',
+      footer: '© 2026 عيادة نور للبشرة — موقع تجريبي خيالي. جميع الأسماء والأسعار والتفاصيل غير حقيقية.'
     }
   };
 

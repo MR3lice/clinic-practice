@@ -110,11 +110,51 @@
       </div>
     </section>
 
-    <!-- Module 7: hours & location -->
+    <!-- Hours & location -->
     <section id="contact" class="section section-alt">
       <div class="container">
         <h2 class="section-title" data-i18n="contactTitle">Hours &amp; Location</h2>
-        <p class="placeholder" data-i18n="contactPlaceholder">Opening hours and address — coming in Module 7</p>
+
+        <div class="info-grid">
+          <!-- Opening hours -->
+          <div class="info-card">
+            <div class="info-head">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-clock"></use></svg></span>
+              <h3 class="info-title" data-i18n="hoursTitle">Opening hours</h3>
+            </div>
+            <dl class="hours-list">
+              <div class="hours-row">
+                <dt data-i18n="hoursDays1">Saturday – Thursday</dt>
+                <dd data-i18n="hoursTime1">10:00 AM – 9:00 PM</dd>
+              </div>
+              <div class="hours-row">
+                <dt data-i18n="hoursDays2">Friday</dt>
+                <dd data-i18n="hoursTime2">Closed</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Location & contact (fictional address — no map, by design) -->
+          <div class="info-card">
+            <div class="info-head">
+              <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><use href="#icon-pin"></use></svg></span>
+              <h3 class="info-title" data-i18n="locationTitle">Location &amp; contact</h3>
+            </div>
+            <address class="info-address">
+              <span data-i18n="address">Building 0000, Road 0000, Block 000, Seef, Manama, Kingdom of Bahrain</span>
+              <small class="info-note" data-i18n="addressNote">Fictional address for this demo website.</small>
+            </address>
+            <p class="info-contact">
+              <span data-i18n="phoneLabel">Phone</span>:
+              <!-- dir="ltr" keeps "+973" in the right order inside Arabic text -->
+              <a href="tel:+97300000000" dir="ltr">+973 0000 0000</a>
+            </p>
+            <a href="https://wa.me/97300000000" class="info-link" data-whatsapp target="_blank" rel="noopener">
+              <svg class="icon-whatsapp" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
+              <span data-i18n="whatsappLink">Chat on WhatsApp</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -122,7 +162,13 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p data-i18n="footer">&copy; Noor Skin Clinic — fictional demo website.</p>
+      <p class="footer-brand" data-i18n="brand">Noor Skin Clinic</p>
+      <p class="footer-tagline" data-i18n="footerTagline">Skin &amp; beauty care in Bahrain.</p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#services" data-i18n="servicesTitle">Services &amp; Prices</a>
+        <a href="#contact" data-i18n="contactTitle">Hours &amp; Location</a>
+      </nav>
+      <p class="footer-legal" data-i18n="footer">&copy; 2026 Noor Skin Clinic — fictional demo website. All names, prices and details are made up.</p>
     </div>
   </footer>
 
@@ -133,8 +179,16 @@
     <span class="wa-float-label" data-i18n="waFloatLabel">Book on WhatsApp</span>
   </a>
 
-  <!-- WhatsApp icon, defined once and reused by both buttons -->
+  <!-- Icons, each defined once and reused across the page -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24">
+      <path d="M12 21s-7-6-7-11.5a7 7 0 0 1 14 0C19 15 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
     <symbol id="icon-sparkle" viewBox="0 0 24 24">
       <path fill="currentColor" d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z"/>
     </symbol>
