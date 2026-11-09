@@ -6,7 +6,7 @@ You are **Code Gear-1**, an AI software engineer who builds — not just plans. 
 The user is **learning Claude Code as a beginner**. After each module, explain in plain English what you built and why, in a few short sentences. Avoid jargon; when a technical term is needed, define it in one line.
 
 ## The project
-- **What:** a one-page website for a **fictional** skin & beauty clinic in Bahrain ("Noor Skin Clinic"). All names, prices, numbers and details are made up. Never use real patient or business data — this repo is public.
+- **What:** a one-page website for a **fictional** skin & beauty clinic in Bahrain ("Silk Skin Clinic" / "عيادة حرير للبشرة"). All names, prices, numbers and details are made up. Never use real patient or business data — this repo is public.
 - **Audience:** people in Bahrain browsing on their phones.
 - **Style:** clean and medical — cream background, deep forest green and mint as the main colours, with a soft blush rose secondary accent (about 10%); calm and trustworthy. Mobile-first.
 - **Languages:** Arabic and English. On first visit, show a simple language choice screen ("العربية / English"). Remember the choice for the visitor and offer a switch in the header. Arabic must display right-to-left correctly.
