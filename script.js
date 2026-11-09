@@ -9,6 +9,7 @@
   'use strict';
 
   var STORAGE_KEY = 'noor-lang';
+  var WHATSAPP_NUMBER = '97300000000'; // dummy number — this is a fictional clinic
 
   var translations = {
     en: {
@@ -25,6 +26,8 @@
       heroText: 'Expert skin care by licensed specialists, in a calm and modern clinic.',
       heroBook: 'Book now',
       heroPrices: 'View prices',
+      waMessage: 'Hello Noor Skin Clinic, I would like to book an appointment.',
+      waFloatLabel: 'Book on WhatsApp',
       servicesTitle: 'Services & Prices',
       svc1Name: 'Dermatologist consultation',
       svc1Desc: 'A full skin assessment and a personal treatment plan.',
@@ -69,6 +72,8 @@
       heroText: 'عناية متخصصة بالبشرة على أيدي أطباء مرخّصين، في عيادة هادئة وحديثة.',
       heroBook: 'احجز موعدك',
       heroPrices: 'عرض الأسعار',
+      waMessage: 'مرحبًا عيادة نور للبشرة، أود حجز موعد.',
+      waFloatLabel: 'احجز عبر واتساب',
       servicesTitle: 'الخدمات والأسعار',
       svc1Name: 'استشارة طبيب جلدية',
       svc1Desc: 'تقييم شامل للبشرة وخطة علاج مناسبة لك.',
@@ -138,6 +143,17 @@
       }
     });
 
+    // WhatsApp links: add the ready-made message in the current language.
+    // encodeURIComponent makes spaces and Arabic letters safe inside a web address.
+    var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(t.waMessage);
+    document.querySelectorAll('[data-whatsapp]').forEach(function (link) {
+      link.href = waUrl;
+    });
+    var waFloat = document.getElementById('wa-float');
+    if (waFloat) {
+      waFloat.setAttribute('aria-label', t.waFloatLabel);
+    }
+
     document.title = t.metaTitle;
     var desc = document.querySelector('meta[name="description"]');
     if (desc) {
@@ -160,7 +176,7 @@
 
   /* --- First-visit language screen --- */
   var picker = document.getElementById('lang-picker');
-  var pageParts = document.querySelectorAll('.site-header, main, .site-footer');
+  var pageParts = document.querySelectorAll('.site-header, main, .site-footer, .wa-float');
 
   function openPicker() {
     picker.hidden = false;
