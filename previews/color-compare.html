@@ -35,6 +35,10 @@
       --deco: #E8C9C1;
       --accent-text: #9E4F55;
     }
+    .theme-sand {
+      --deco: #D9C7A7;           /* backgrounds/badges/dividers only — never text */
+      --accent-text: #8C6B45;
+    }
 
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -180,7 +184,8 @@
       color: var(--green-dark);
     }
     .m-sparkle { width: 14px; height: 14px; color: var(--deco); flex-shrink: 0; } /* ACCENT: icon */
-    .theme-rose .m-sparkle {
+    .theme-rose .m-sparkle,
+    .theme-sand .m-sparkle {
       width: 22px; height: 22px; padding: 4px;
       background: var(--deco); color: var(--accent-text); border-radius: 50%;
     }
@@ -257,7 +262,7 @@
 
   <main class="page">
     <h1 class="page-title">Second accent colour — preview</h1>
-    <p class="page-intro">Each mini site uses the current green, mint and cream. The new colour (about 10% of each sample) appears in the same places in both options: header line, hero circle, small icon by the label, card badge, card divider and footer line.</p>
+    <p class="page-intro">Each mini site uses the current green, mint and cream. The new colour (about 10% of each sample) appears in the same places in all options: header line, hero circle, small icon by the label, card badge, card divider and footer line.</p>
 
     <!-- ================= OPTION A ================= -->
     <section class="option theme-gold" id="option-a">
@@ -337,6 +342,69 @@
         </div>
       </div>
       <p class="note">Contrast: deep rose text on a light blush badge fails (3.66:1, needs 4.5), so the badge here uses near-black text (11.5:1). Light blush lines are very faint on cream (1.46:1) — fine for decoration, but subtle.</p>
+
+      <div class="samples">
+        <div>
+          <p class="sample-label">English</p>
+          <div class="mini" lang="en" dir="ltr">
+            <div class="m-header"><span class="m-brand">Noor Skin Clinic</span><span class="m-switch" lang="ar">العربية</span></div>
+            <div class="m-hero">
+              <p class="m-eyebrow"><svg class="m-sparkle" aria-hidden="true"><use href="#sparkle"/></svg>Skin &amp; Beauty Clinic · Bahrain</p>
+              <h3 class="m-title">Healthy, <span class="hl">glowing</span> skin starts here</h3>
+              <p class="m-text">Expert skin care by licensed specialists, in a calm and modern clinic.</p>
+              <div class="m-btn"><svg aria-hidden="true"><use href="#wa"/></svg>Book now</div>
+            </div>
+            <div class="m-section">
+              <div class="m-card">
+                <span class="m-badge">Most popular</span>
+                <h3>Deep hydrating facial</h3>
+                <p>Cleanses, exfoliates and hydrates for fresh, glowing skin.</p>
+                <div class="m-meta"><span class="m-price">BHD 35</span><span class="m-time">60 min</span></div>
+              </div>
+            </div>
+            <div class="m-footer"><svg class="m-sparkle" aria-hidden="true"><use href="#sparkle"/></svg>© Noor Skin Clinic — fictional demo website.</div>
+          </div>
+        </div>
+
+        <div>
+          <p class="sample-label">العربية</p>
+          <div class="mini" lang="ar" dir="rtl">
+            <div class="m-header"><span class="m-brand">عيادة نور للبشرة</span><span class="m-switch" lang="en">English</span></div>
+            <div class="m-hero">
+              <p class="m-eyebrow"><svg class="m-sparkle" aria-hidden="true"><use href="#sparkle"/></svg>عيادة البشرة والتجميل · البحرين</p>
+              <h3 class="m-title">بشرة صحية و<span class="hl">مشرقة</span> تبدأ من هنا</h3>
+              <p class="m-text">عناية متخصصة بالبشرة على أيدي أطباء مرخّصين، في عيادة هادئة وحديثة.</p>
+              <div class="m-btn"><svg aria-hidden="true"><use href="#wa"/></svg>احجز موعدك</div>
+            </div>
+            <div class="m-section">
+              <div class="m-card">
+                <span class="m-badge">الأكثر طلبًا</span>
+                <h3>تنظيف وترطيب عميق للبشرة</h3>
+                <p>تنظيف وتقشير وترطيب لبشرة منتعشة ومشرقة.</p>
+                <div class="m-meta"><span class="m-price">35 د.ب</span><span class="m-time">60 دقيقة</span></div>
+              </div>
+            </div>
+            <div class="m-footer"><svg class="m-sparkle" aria-hidden="true"><use href="#sparkle"/></svg>© عيادة نور للبشرة — موقع تجريبي خيالي.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= OPTION C ================= -->
+    <section class="option theme-sand" id="option-c">
+      <h2 class="option-title">Option C: Warm sand</h2>
+
+      <div class="swatches">
+        <div class="swatch">
+          <div class="chip" style="background:#D9C7A7"></div>
+          <div><strong>Warm sand #D9C7A7</strong>Soft backgrounds, badges, divider areas — never text</div>
+        </div>
+        <div class="swatch">
+          <div class="chip" style="background:#F8F8F4;color:#8C6B45">Aa</div>
+          <div><strong>Dark sand #8C6B45</strong>Sand text on white or cream (4.6–4.9:1)</div>
+        </div>
+      </div>
+      <p class="note">Contrast: dark sand text only just passes on cream (4.58:1) and fails on mint (4.29:1) and on a warm sand badge (2.95:1), so the badge here uses near-black text (10.7:1). Warm sand is faint on cream (1.56:1) — fine for decoration, but subtle.</p>
 
       <div class="samples">
         <div>
