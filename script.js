@@ -1,5 +1,5 @@
 /* =========================================================
-   Noor Skin Clinic — language system
+   Silk Skin Clinic — language system
    - All page text lives in the `translations` object below.
    - Elements with data-i18n="key" get their text from it.
    - The visitor's choice is saved in localStorage (the
@@ -8,14 +8,14 @@
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'noor-lang';
+  var STORAGE_KEY = 'silk-lang';
   var WHATSAPP_NUMBER = '97300000000'; // dummy number — this is a fictional clinic
 
   var translations = {
     en: {
-      metaTitle: 'Noor Skin Clinic | Bahrain',
-      metaDescription: 'Noor Skin Clinic — a fictional skin and beauty clinic in Bahrain. Demo website.',
-      brand: 'Noor Skin Clinic',
+      metaTitle: 'Silk Skin Clinic | Bahrain',
+      metaDescription: 'Silk Skin Clinic — a fictional skin and beauty clinic in Bahrain. Demo website.',
+      brand: 'Silk Skin Clinic',
       switchLabel: 'العربية',
       switchAria: 'التبديل إلى العربية',
       heroEyebrow: 'Skin & Beauty Clinic · Bahrain',
@@ -26,7 +26,7 @@
       heroText: 'Expert skin care by licensed specialists, in a calm and modern clinic.',
       heroBook: 'Book now',
       heroPrices: 'View prices',
-      waMessage: 'Hello Noor Skin Clinic, I would like to book an appointment.',
+      waMessage: 'Hello Silk Skin Clinic, I would like to book an appointment.',
       waFloatLabel: 'Book on WhatsApp',
       servicesTitle: 'Services & Prices',
       svc1Name: 'Dermatologist consultation',
@@ -67,12 +67,12 @@
       phoneLabel: 'Phone',
       whatsappLink: 'Chat on WhatsApp',
       footerTagline: 'Skin & beauty care in Bahrain.',
-      footer: '© 2026 Noor Skin Clinic — fictional demo website. All names, prices and details are made up.'
+      footer: '© 2026 Silk Skin Clinic — fictional demo website. All names, prices and details are made up.'
     },
     ar: {
-      metaTitle: 'عيادة نور للبشرة | البحرين',
-      metaDescription: 'عيادة نور للبشرة — عيادة خيالية للعناية بالبشرة والتجميل في البحرين. موقع تجريبي.',
-      brand: 'عيادة نور للبشرة',
+      metaTitle: 'عيادة حرير للبشرة | البحرين',
+      metaDescription: 'عيادة حرير للبشرة — عيادة خيالية للعناية بالبشرة والتجميل في البحرين. موقع تجريبي.',
+      brand: 'عيادة حرير للبشرة',
       switchLabel: 'English',
       switchAria: 'Switch to English',
       heroEyebrow: 'عيادة البشرة والتجميل · البحرين',
@@ -83,7 +83,7 @@
       heroText: 'عناية متخصصة بالبشرة على أيدي أطباء مرخّصين، في عيادة هادئة وحديثة.',
       heroBook: 'احجز موعدك',
       heroPrices: 'عرض الأسعار',
-      waMessage: 'مرحبًا عيادة نور للبشرة، أود حجز موعد.',
+      waMessage: 'مرحبًا عيادة حرير للبشرة، أود حجز موعد.',
       waFloatLabel: 'احجز عبر واتساب',
       servicesTitle: 'الخدمات والأسعار',
       svc1Name: 'استشارة طبيب جلدية',
@@ -125,7 +125,7 @@
       phoneLabel: 'الهاتف',
       whatsappLink: 'تواصل عبر واتساب',
       footerTagline: 'العناية بالبشرة والتجميل في البحرين.',
-      footer: '© 2026 عيادة نور للبشرة — موقع تجريبي خيالي. جميع الأسماء والأسعار والتفاصيل غير حقيقية.'
+      footer: '© 2026 عيادة حرير للبشرة — موقع تجريبي خيالي. جميع الأسماء والأسعار والتفاصيل غير حقيقية.'
     }
   };
 
