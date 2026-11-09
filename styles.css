@@ -219,6 +219,10 @@ html[lang="ar"] body {
   text-align: center;
 }
 
+.lang-picker-box:focus {
+  outline: none; /* the card only receives focus for screen readers; it is not clickable */
+}
+
 .lang-picker-brand {
   font-size: 1.25rem;
   font-weight: 600;

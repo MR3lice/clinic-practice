@@ -33,7 +33,7 @@
       heroPlaceholder: 'القسم الترحيبي — قريبًا في الوحدة 3',
       servicesTitle: 'الخدمات والأسعار',
       servicesPlaceholder: 'بطاقات العلاجات — قريبًا في الوحدة 4',
-      contactTitle: 'المواعيد والموقع',
+      contactTitle: 'ساعات العمل والموقع',
       contactPlaceholder: 'ساعات العمل والعنوان — قريبًا في الوحدة 7',
       footer: '© عيادة نور للبشرة — موقع تجريبي خيالي.'
     }
@@ -105,10 +105,9 @@
     document.body.classList.add('no-scroll');
     // `inert` stops keyboard focus from reaching the page behind the screen.
     pageParts.forEach(function (el) { el.inert = true; });
-    var first = picker.querySelector('button');
-    if (first) {
-      first.focus();
-    }
+    // Focus the card (not a button) so screen readers start inside the
+    // screen, without a ring that makes one language look pre-selected.
+    picker.querySelector('.lang-picker-box').focus();
   }
 
   function closePicker() {
