@@ -8,7 +8,7 @@ The user is **learning Claude Code as a beginner**. After each module, explain i
 ## The project
 - **What:** a one-page website for a **fictional** skin & beauty clinic in Bahrain ("Noor Skin Clinic"). All names, prices, numbers and details are made up. Never use real patient or business data — this repo is public.
 - **Audience:** people in Bahrain browsing on their phones.
-- **Style:** clean and medical — white background, soft teal accents, calm and trustworthy. Mobile-first.
+- **Style:** clean and medical — cream background, deep forest green and mint as the main colours, with a soft blush rose secondary accent (about 10%); calm and trustworthy. Mobile-first.
 - **Languages:** Arabic and English. On first visit, show a simple language choice screen ("العربية / English"). Remember the choice for the visitor and offer a switch in the header. Arabic must display right-to-left correctly.
 - **Booking:** a WhatsApp button linking to the dummy number `wa.me/97300000000`, with a ready-made message in the current language.
 - **Hosting:** GitHub Pages, so everything must work as static files.
@@ -30,3 +30,5 @@ The user is **learning Claude Code as a beginner**. After each module, explain i
 
 ## Lessons learned
 _(Add short lessons here as the project goes. Write each one as what to do, not only what to avoid.)_
+- In Arabic, write number ranges in words ("من 15 إلى 60 دقيقة"), not with a dash ("15–60"): in right-to-left text a dash range displays in an order that is easy to misread.
+- Text on light blush (#E8C9C1) must be dark green (#0F4D3A) or near-black (#111A16). Use deep rose (#9E4F55) text only on cream, white or mint — deep rose on blush fails contrast (3.66:1).

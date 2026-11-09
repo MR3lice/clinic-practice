@@ -1,0 +1,682 @@
+/* =========================================================
+   Noor Skin Clinic — base styles
+   Mobile-first: base rules target phones; wider screens
+   are handled with min-width media queries at the bottom.
+   Logical properties (margin-inline, padding-block, ...)
+   are used so the layout flips automatically for Arabic (RTL).
+   ========================================================= */
+
+/* ---------- Design tokens (colours, spacing, fonts) ---------- */
+:root {
+  --color-bg: #F8F8F4;          /* cream page background */
+  --color-bg-alt: #E8F3EC;      /* mint for alternating sections */
+  --color-text: #111A16;        /* near-black with a hint of green — all text */
+  --color-text-muted: #4F5F57;  /* green-grey for secondary text */
+  --color-primary: #1E8A5A;     /* accent green — highlighted words, focus rings.
+                                   Large text only: too light for small text (WCAG). */
+  --color-primary-dark: #0F4D3A;/* deep forest green — buttons, footer, small coloured text */
+  --color-primary-hover: #146B47;/* filled-button hover (white text stays readable) */
+  --color-primary-light: #E8F3EC;/* mint — hero fade, outline-button hover */
+  --color-border: #D3E6DA;
+  --color-surface: #FFFFFF;     /* cards sitting on the cream background */
+
+  /* Secondary accent: blush rose (about 10%; green stays the main colour) */
+  --color-blush: #E8C9C1;       /* soft backgrounds and badges only.
+                                   Text on blush must be dark green or near-black. */
+  --color-rose: #9E4F55;        /* small accents and rose text, only on cream, white or mint.
+                                   Never on blush (3.66:1 fails). */
+
+  --font-main: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius: 12px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --container-max: 960px;
+  --header-height: 60px;
+  --wa-bar-height: 56px;        /* phone booking bar, not counting the iPhone home-bar area */
+}
+
+/* ---------- Reset & base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height); /* anchor links don't hide under sticky header */
+  scroll-padding-bottom: calc(var(--wa-bar-height) + env(safe-area-inset-bottom, 0px)); /* ...or under the booking bar */
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  line-height: 1.3;
+  margin-block: 0 var(--space-2);
+  font-weight: 600;
+}
+
+p {
+  margin-block: 0 var(--space-2);
+}
+
+a {
+  color: var(--color-primary-dark);
+}
+
+/* Visible keyboard focus for accessibility */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout helpers ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-2);
+  /* Phones turned sideways: keep text clear of the notch (needs viewport-fit=cover) */
+  padding-left: max(var(--space-2), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-2), env(safe-area-inset-right, 0px));
+}
+
+.section {
+  padding-block: var(--space-4);
+}
+
+.section-alt {
+  background: var(--color-bg-alt);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+}
+
+/* Short rose bar under each section title (rose on cream 5.33:1, on mint 4.99:1) */
+.section-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin-block-start: 0.5rem;
+  border-radius: 2px;
+  background: var(--color-rose);
+}
+
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg);
+  border-block-end: 4px solid var(--color-blush); /* rose accent line (decorative) */
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+
+.brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;             /* clip the decorative circle at the hero edges */
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 100%);
+  padding-block: 4.25rem var(--space-4); /* extra top room so the circle never touches the text */
+}
+
+/* Decorative blush circle in the top corner (top-right in English, top-left in Arabic) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -120px;
+  inset-inline-end: -50px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--color-blush);
+}
+
+.hero > .container {
+  position: relative;           /* keeps the text above the circle */
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-block-end: var(--space-1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  letter-spacing: 0.02em;
+}
+
+html[lang="ar"] .hero-eyebrow {
+  letter-spacing: 0; /* letter spacing breaks Arabic joined letters */
+}
+
+/* Small sparkle before the label: rose icon on a blush circle (icon, not text: 3.66:1 passes the 3:1 icon rule) */
+.eyebrow-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-blush);
+  color: var(--color-rose);
+}
+
+.eyebrow-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.hero-title {
+  font-size: 2rem;
+  color: var(--color-text);
+}
+
+/* One highlighted word in the headline (large text, so the accent passes contrast) */
+.highlight {
+  color: var(--color-primary);
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-3);
+  max-width: 32em;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;   /* stacked, full-width buttons on phones */
+  gap: 0.75rem;
+}
+
+/* ---------- Services & prices ---------- */
+.service-list {
+  list-style: none;
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;   /* one card per row on phones */
+  gap: var(--space-2);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+/* "Most popular" badge: dark green text on blush (6.33:1) */
+.service-badge {
+  align-self: flex-start;       /* hugs the text; sits at the start side in both languages */
+  margin-block-end: var(--space-1);
+  padding: 0.1rem 0.75rem;
+  border-radius: 999px;
+  background: var(--color-blush);
+  color: var(--color-primary-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.service-name {
+  font-size: 1.15rem;
+  margin-block-end: var(--space-1);
+}
+
+.service-desc {
+  color: var(--color-text-muted);
+  flex-grow: 1;                 /* keeps prices lined up at the bottom of each card */
+}
+
+.service-meta {
+  display: flex;
+  flex-wrap: wrap;              /* if the card is narrow, the time moves below the price */
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem var(--space-2);
+  margin: 0;
+  padding-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-border);
+}
+
+.service-price {
+  white-space: nowrap;          /* never split a price across two lines */
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.service-time {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.service-note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- WhatsApp booking ---------- */
+.icon-whatsapp {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+}
+
+.btn-whatsapp {
+  gap: 0.5rem;                  /* space between icon and text */
+}
+
+/* Phones: full-width booking bar fixed to the bottom of the screen */
+.wa-float {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: calc(var(--wa-bar-height) + env(safe-area-inset-bottom, 0px));
+  /* the bottom padding keeps the text above the iPhone home bar */
+  padding: 0 max(1rem, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(1rem, env(safe-area-inset-left, 0px));
+  background: var(--color-primary-dark);
+  border-block-start: 1px solid rgba(255, 255, 255, 0.2); /* separates it from the dark footer */
+  box-shadow: 0 -4px 14px rgba(15, 77, 58, 0.2);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.2s ease, opacity 0.2s ease, visibility 0s;
+}
+
+.wa-float:hover {
+  background: var(--color-primary-hover);
+}
+
+/* Hidden while the hero "Book now" button is visible (set by script.js).
+   visibility:hidden also removes it from keyboard and screen-reader focus. */
+.wa-float.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: transform 0.2s ease, opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float,
+  .wa-float.is-hidden {
+    transition: none;
+  }
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: var(--space-3);
+  /* Phones: room for the booking bar (and iPhone home-bar area) so it never covers footer text */
+  padding-block-end: calc(var(--space-3) + var(--wa-bar-height) + env(safe-area-inset-bottom, 0px));
+  border-block-start: 6px solid var(--color-blush); /* rose accent line (blush on dark green 6.33:1) */
+  background: var(--color-primary-dark);
+  color: #ffffff;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-brand {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 var(--space-3);
+  margin-block: var(--space-1);
+}
+
+.footer-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;             /* comfortable tap target */
+  color: #ffffff;
+  text-underline-offset: 3px;
+}
+
+.footer-legal {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Hours & location ---------- */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+}
+
+.info-card {
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.info-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-block-end: var(--space-2);
+}
+
+/* Rose icon on a blush circle (icon, not text: 3.66:1 passes the 3:1 icon rule) */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-blush);
+  color: var(--color-rose);
+}
+
+.info-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.info-title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.hours-list {
+  margin: 0;
+}
+
+.hours-row {
+  display: flex;
+  flex-wrap: wrap;              /* time drops below the days on very narrow screens */
+  justify-content: space-between;
+  gap: 0 var(--space-2);
+  padding-block: 0.6rem;
+  border-block-start: 1px solid var(--color-border);
+}
+
+.hours-row dt {
+  color: var(--color-text);
+}
+
+.hours-row dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.info-address {
+  font-style: normal;
+  margin-block-end: var(--space-2);
+}
+
+.info-note {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.info-contact {
+  margin-block-end: var(--space-1);
+}
+
+.info-contact a,
+.info-link {
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.info-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+}
+
+/* ---------- Arabic tweaks ---------- */
+html[lang="ar"] body {
+  line-height: 1.8; /* Arabic script reads better with a little more line spacing */
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;           /* comfortable finger-sized tap target */
+  padding: 0.6rem 1.4rem;
+  border: 2px solid var(--color-primary-dark);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-dark);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary-light);
+}
+
+.btn-small {
+  min-height: 44px;
+  padding: 0.3rem 1rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- First-visit language screen ---------- */
+.lang-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 70%);
+}
+
+.lang-picker[hidden] {
+  display: none;
+}
+
+.lang-picker-box {
+  width: 100%;
+  max-width: 360px;
+  padding: var(--space-4) var(--space-3);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-block-start: 6px solid var(--color-blush); /* rose accent line (decorative) */
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(15, 77, 58, 0.12);
+  text-align: center;
+}
+
+.lang-picker-box:focus {
+  outline: none; /* the card only receives focus for screen readers; it is not clickable */
+}
+
+.lang-picker-brand {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  line-height: 1.5;
+}
+
+.lang-picker-title {
+  color: var(--color-text-muted);
+  margin-block-end: var(--space-3);
+}
+
+.lang-picker-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.lang-picker-buttons .btn {
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* ---------- Wider screens ---------- */
+@media (min-width: 480px) {
+  .hero-actions {
+    flex-direction: row;    /* buttons side by side once there is room */
+  }
+}
+
+@media (min-width: 600px) {
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .service-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-block: 5rem 4rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .section {
+    padding-block: 4rem;
+  }
+
+  .section-title {
+    font-size: 1.85rem;
+  }
+
+  /* Wider screens: the booking bar becomes a round corner button */
+  html {
+    scroll-padding-bottom: 0;
+  }
+
+  .wa-float {
+    inset-inline: auto 1.5rem;    /* bottom-right in English, bottom-left in Arabic */
+    inset-block-end: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    width: 56px;
+    min-height: 0;
+    height: 56px;
+    padding: 0;
+    border: 3px solid var(--color-surface); /* white ring keeps it visible over the dark footer */
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(15, 77, 58, 0.35);
+  }
+
+  .wa-float:hover {
+    transform: scale(1.05);
+  }
+
+  .wa-float.is-hidden {
+    transform: translateY(1rem);
+  }
+
+  .wa-float .icon-whatsapp {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Label stays readable by screen readers, but is not shown on the round button */
+  .wa-float-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-footer {
+    padding-block-end: calc(56px + 2.5rem); /* room so the round button never covers footer text */
+  }
+}
