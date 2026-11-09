@@ -30,3 +30,4 @@ The user is **learning Claude Code as a beginner**. After each module, explain i
 
 ## Lessons learned
 _(Add short lessons here as the project goes. Write each one as what to do, not only what to avoid.)_
+- In Arabic, write number ranges in words ("من 15 إلى 60 دقيقة"), not with a dash ("15–60"): in right-to-left text a dash range displays in an order that is easy to misread.
