@@ -35,6 +35,7 @@
   --space-4: 2.5rem;
   --container-max: 960px;
   --header-height: 60px;
+  --wa-bar-height: 56px;        /* phone booking bar, not counting the iPhone home-bar area */
 }
 
 /* ---------- Reset & base ---------- */
@@ -47,6 +48,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height); /* anchor links don't hide under sticky header */
+  scroll-padding-bottom: calc(var(--wa-bar-height) + env(safe-area-inset-bottom, 0px)); /* ...or under the booking bar */
 }
 
 body {
@@ -90,6 +92,9 @@ a {
   max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--space-2);
+  /* Phones turned sideways: keep text clear of the notch (needs viewport-fit=cover) */
+  padding-left: max(var(--space-2), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--space-2), env(safe-area-inset-right, 0px));
 }
 
 .section {
@@ -310,38 +315,54 @@ html[lang="ar"] .hero-eyebrow {
   gap: 0.5rem;                  /* space between icon and text */
 }
 
+/* Phones: full-width booking bar fixed to the bottom of the screen */
 .wa-float {
   position: fixed;
-  inset-block-end: calc(1rem + env(safe-area-inset-bottom, 0px)); /* clear iPhone home bar */
-  inset-inline-end: 1rem;       /* bottom-right in English, bottom-left in Arabic */
+  inset-inline: 0;
+  inset-block-end: 0;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border: 3px solid var(--color-surface); /* white ring keeps it visible over the dark footer */
-  border-radius: 50%;
+  gap: 0.5rem;
+  min-height: calc(var(--wa-bar-height) + env(safe-area-inset-bottom, 0px));
+  /* the bottom padding keeps the text above the iPhone home bar */
+  padding: 0 max(1rem, env(safe-area-inset-right, 0px)) env(safe-area-inset-bottom, 0px) max(1rem, env(safe-area-inset-left, 0px));
   background: var(--color-primary-dark);
+  border-block-start: 1px solid rgba(255, 255, 255, 0.2); /* separates it from the dark footer */
+  box-shadow: 0 -4px 14px rgba(15, 77, 58, 0.2);
   color: #ffffff;
-  box-shadow: 0 4px 14px rgba(15, 77, 58, 0.35);
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: background-color 0.15s ease, transform 0.2s ease, opacity 0.2s ease, visibility 0s;
 }
 
 .wa-float:hover {
   background: var(--color-primary-hover);
-  transform: scale(1.05);
 }
 
-.wa-float .icon-whatsapp {
-  width: 28px;
-  height: 28px;
+/* Hidden while the hero "Book now" button is visible (set by script.js).
+   visibility:hidden also removes it from keyboard and screen-reader focus. */
+.wa-float.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: transform 0.2s ease, opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-float,
+  .wa-float.is-hidden {
+    transition: none;
+  }
 }
 
 /* ---------- Footer ---------- */
 .site-footer {
   padding-block: var(--space-3);
-  padding-block-end: calc(56px + 2.5rem); /* room so the floating button never covers footer text */
+  /* Phones: room for the booking bar (and iPhone home-bar area) so it never covers footer text */
+  padding-block-end: calc(var(--space-3) + var(--wa-bar-height) + env(safe-area-inset-bottom, 0px));
   border-block-start: 6px solid var(--color-blush); /* rose accent line (blush on dark green 6.33:1) */
   background: var(--color-primary-dark);
   color: #ffffff;
@@ -492,5 +513,49 @@ body.no-scroll {
 
   .section-title {
     font-size: 1.85rem;
+  }
+
+  /* Wider screens: the booking bar becomes a round corner button */
+  html {
+    scroll-padding-bottom: 0;
+  }
+
+  .wa-float {
+    inset-inline: auto 1.5rem;    /* bottom-right in English, bottom-left in Arabic */
+    inset-block-end: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    width: 56px;
+    min-height: 0;
+    height: 56px;
+    padding: 0;
+    border: 3px solid var(--color-surface); /* white ring keeps it visible over the dark footer */
+    border-radius: 50%;
+    box-shadow: 0 4px 14px rgba(15, 77, 58, 0.35);
+  }
+
+  .wa-float:hover {
+    transform: scale(1.05);
+  }
+
+  .wa-float.is-hidden {
+    transform: translateY(1rem);
+  }
+
+  .wa-float .icon-whatsapp {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Label stays readable by screen readers, but is not shown on the round button */
+  .wa-float-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .site-footer {
+    padding-block-end: calc(56px + 2.5rem); /* room so the round button never covers footer text */
   }
 }

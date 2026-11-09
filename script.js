@@ -151,11 +151,6 @@
     document.querySelectorAll('[data-whatsapp]').forEach(function (link) {
       link.href = waUrl;
     });
-    var waFloat = document.getElementById('wa-float');
-    if (waFloat) {
-      waFloat.setAttribute('aria-label', t.waFloatLabel);
-    }
-
     document.title = t.metaTitle;
     var desc = document.querySelector('meta[name="description"]');
     if (desc) {
@@ -212,6 +207,21 @@
   document.getElementById('lang-switch').addEventListener('click', function () {
     setLanguage(currentLang === 'ar' ? 'en' : 'ar');
   });
+
+  /* --- Booking bar: hide it while the hero "Book now" button is on screen,
+         so there are never two booking buttons visible at once.
+         IntersectionObserver = the browser tells us when an element enters
+         or leaves the screen. Without it, the bar simply stays visible. --- */
+  var heroActions = document.querySelector('.hero-actions');
+  var waBar = document.getElementById('wa-float');
+  if (heroActions && waBar && 'IntersectionObserver' in window) {
+    waBar.classList.add('is-hidden'); // start hidden: the page opens on the hero
+    new IntersectionObserver(function (entries) {
+      waBar.classList.toggle('is-hidden', entries[0].isIntersecting);
+    }, {
+      rootMargin: '-60px 0px 0px 0px' // ignore the part hidden behind the sticky header
+    }).observe(heroActions);
+  }
 
   /* --- Start-up --- */
   var saved = getSavedLang();

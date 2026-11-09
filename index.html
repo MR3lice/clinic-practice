@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Noor Skin Clinic | Bahrain</title>
   <meta name="description" content="Noor Skin Clinic — a fictional skin and beauty clinic in Bahrain. Demo website.">
   <meta name="theme-color" content="#0F4D3A">
@@ -126,9 +126,11 @@
     </div>
   </footer>
 
-  <!-- Floating WhatsApp booking button (stays in the corner while scrolling) -->
-  <a href="https://wa.me/97300000000" id="wa-float" class="wa-float" data-whatsapp target="_blank" rel="noopener" aria-label="Book on WhatsApp">
+  <!-- WhatsApp booking: a bottom bar on phones, a round corner button on wider screens.
+       Hidden by script.js while the hero "Book now" button is on screen. -->
+  <a href="https://wa.me/97300000000" id="wa-float" class="wa-float" data-whatsapp target="_blank" rel="noopener">
     <svg class="icon-whatsapp" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#icon-whatsapp"></use></svg>
+    <span class="wa-float-label" data-i18n="waFloatLabel">Book on WhatsApp</span>
   </a>
 
   <!-- WhatsApp icon, defined once and reused by both buttons -->
